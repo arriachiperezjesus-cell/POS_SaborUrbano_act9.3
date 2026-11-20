@@ -26,17 +26,48 @@ def seleccionar_metodo_pago():
     imprimir_separador()
     print("--- Método de pago ---")
     # TODO 1: Mueve aquí el ciclo while que pide y valida el método de pago (1 o 2).
+    metodo_pago = ""
+    while metodo_pago not in ["1", "2"]:
+        metodo_pago = input("1. Efectivo\n2. Tarjeta\nOpción: ")
+        if metodo_pago not in ["1", "2"]:
+            print("Opción inválida. Seleccione 1 o 2.")
+        #Fin-if
+    #Fin-while
     # Recuerda retornar la variable metodo_pago al final.
-    pass
+    return metodo_pago
 
 def calcular_totales(subtotal, metodo_pago):
     """Calcula IVA, descuento y total final. Retorna el total_final."""
     # TODO 2: Calcula monto_iva (19%) y total_iva.
+    monto_iva = subtotal * 0.19
+    total_iva = subtotal + monto_iva
+
     # TODO 3: Si metodo_pago == "1", aplica 5% de descuento sobre total_iva.
+    descuento = 0.0 
+    if metodo_pago == "1":
+        descuento = total_iva*0.05
+        print("Descuento por efectivo (5%): ", descuento)
+    #fin-if    
+    total_final = total_iva - descuento
+
     # TODO 4: Imprime el detalle de la boleta usando imprimir_separador().
+    imprimir_separador()
+    print("--- Boleta ---")
+    print("Subtotal: ", subtotal)
+    print("Monto IVA: ", monto_iva)
+    print("Total Cliente (+IVA): ", total_iva)
+    print("Total Final (+IVA): ", total_final)
+
     # TODO 5: Clasifica si es 'Venta Alta' (> 15000) o 'Venta Habitual'.
+    if total_final > 15000:
+        print("Clasificada como Venta Alta")    
+    else:
+        print("Clasificada como Venta Habitual")
+    # fin-if
+    imprimir_separador()
+    
     # TODO 6: Retorna el total_final calculado.
-    pass
+    return total_final
 
 def procesar_venta():
     """Orquesta el flujo completo de una venta y retorna el monto final."""
