@@ -1,13 +1,14 @@
 # ==========================================
 # 3. PROGRAMA PRINCIPAL MAIN_2.PY
 # ==========================================
+from funciones_bd import *
 from funciones_interfaz import *
 from funciones_ventas import *
 
 def iniciar_caja():
     monto_total_diario = 0.0
     caja_abierta = True
-
+    inicializar_bd()
     while caja_abierta:
         opcion = mostrar_menu()
 
