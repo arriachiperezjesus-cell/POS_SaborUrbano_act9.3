@@ -5,10 +5,11 @@ from funciones_interfaz import *
 
 def ingresar_productos():
     """Pide precios al usuario hasta escribir 'fin' o '0'. Retorna el subtotal."""
+    imprimir_separador()
     print("REGISTRO DE VENTAS")
     subtotal = 0.0
     while True:
-        entrada = input("Ingrese precio (o 'fin' para terminar): ")
+        entrada = input("Ingrese precio (0 o 'fin' para terminar): ")
         if entrada == "0" or entrada.lower() == "fin":
             return subtotal  # Retorno temprano para salir limpio del ciclo
         
@@ -23,7 +24,6 @@ def ingresar_productos():
 
 def seleccionar_metodo_pago():
     """Valida y retorna '1' (Efectivo) o '2' (Tarjeta)."""
-    imprimir_separador()
     print("--- Método de pago ---")
     # TODO 1: Mueve aquí el ciclo while que pide y valida el método de pago (1 o 2).
     metodo_pago = ""
@@ -60,11 +60,10 @@ def calcular_totales(subtotal, metodo_pago):
 
     # TODO 5: Clasifica si es 'Venta Alta' (> 15000) o 'Venta Habitual'.
     if total_final > 15000:
-        print("Clasificada como Venta Alta")    
+        print("** Clasificada como Venta Alta")    
     else:
-        print("Clasificada como Venta Habitual")
+        print("** Clasificada como Venta Habitual")
     # fin-if
-    imprimir_separador()
     
     # TODO 6: Retorna el total_final calculado.
     return total_final
